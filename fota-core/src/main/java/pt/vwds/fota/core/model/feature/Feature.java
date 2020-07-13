@@ -1,7 +1,7 @@
 package pt.vwds.fota.core.model.feature;
 
 import lombok.Builder;
-import pt.vwds.fota.core.model.ComponentsConfiguration;
+import pt.vwds.fota.core.model.vehicle.ComponentsConfiguration;
 
 import java.util.UUID;
 

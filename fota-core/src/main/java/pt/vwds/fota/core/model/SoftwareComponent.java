@@ -5,6 +5,6 @@ import lombok.EqualsAndHashCode;
 
 @AllArgsConstructor
 @EqualsAndHashCode
-public class SoftwareCode {
+public class SoftwareComponent {
     private final String code;
 }
