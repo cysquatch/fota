@@ -1,9 +1,9 @@
 package pt.vwds.fota.core.model;
 
-import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 
-@AllArgsConstructor
+@Builder
 @EqualsAndHashCode
 public class SoftwareComponent {
     private final String code;

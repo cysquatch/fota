@@ -7,6 +7,7 @@
 		<module>fota-application</module>
 		<module>fota-core</module>
 		<module>fota-api</module>
+		<module>fota-file-listener</module>
 	</modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -53,6 +54,12 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+			<version>2.3.1.RELEASE</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-mongodb -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-mongodb</artifactId>
 			<version>2.3.1.RELEASE</version>
 		</dependency>
 	</dependencies>
