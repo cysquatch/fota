@@ -3,3 +3,5 @@ spring:
     mongodb:
       database: fota
       uri: mongodb://localhost:27017
+
+targetFolder:  C:\dev\git\fota\features_csv
