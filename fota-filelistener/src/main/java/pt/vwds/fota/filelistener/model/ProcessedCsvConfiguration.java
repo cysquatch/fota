@@ -9,10 +9,10 @@ import java.util.Map;
 import java.util.Set;
 
 @Getter
-public class ProcessedCsv {
+public class ProcessedCsvConfiguration {
     private final Map<String, Set<String>> vinToComponents;
 
-    public ProcessedCsv() {
+    public ProcessedCsvConfiguration() {
         this.vinToComponents = new HashMap<>();
     }
 

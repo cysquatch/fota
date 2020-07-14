@@ -10,4 +10,12 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>fota-filelistener</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <dependencies>
+        <dependency>
+            <groupId>pt.vwds</groupId>
+            <artifactId>fota-core</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 </project>
