@@ -11,7 +11,9 @@ import pt.vwds.fota.filelistener.services.FileListenerService;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.lang.ref.SoftReference;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 
 @Slf4j
@@ -26,22 +28,16 @@ public class FileListenerServiceImpl implements FileListenerService {
 
     @Override
     public void handleFile(String folderPath, String filename) {
-        log.info("Path: " + folderPath + ". File: " + filename);
-
         if (filename.startsWith("hard") && filename.endsWith(".csv")) {
             log.info("New Hardware configuration found");
             log.info("Path: " + folderPath + ". File: " + filename);
             handleHardwareConfiguration(buildFullPath(folderPath, filename));
-
+            archiveFile(folderPath, filename);
         } else if (filename.startsWith("soft") && filename.endsWith(".csv")) {
             log.info("New Software configuration found");
             log.info("Path: " + folderPath + ". File: " + filename);
             handleSoftwareConfiguration(buildFullPath(folderPath, filename));
-
-        } else {
-            log.info("I'm garbage!");
-
-
+            archiveFile(folderPath, filename);
         }
     }
 
@@ -82,6 +78,21 @@ public class FileListenerServiceImpl implements FileListenerService {
 
     private String buildFullPath(String folderPath, String filename) {
         return folderPath + "\\" + filename;
+    }
+
+    private String buildFullArchivedPath(String folderPath, String filename) {
+        return folderPath + "\\PROCESSED\\" + filename;
+    }
+
+    private void archiveFile(String folderPath, String filename) {
+        try {
+            Files.createDirectories(Paths.get(buildFullArchivedPath(folderPath, "")));
+            Files.move(Paths.get(buildFullPath(folderPath, filename)),
+                    Paths.get(buildFullArchivedPath(folderPath, filename)));
+            log.info("File: " + filename + " has been processed and archived.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

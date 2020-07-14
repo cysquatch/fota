@@ -7,6 +7,7 @@ import pt.vwds.fota.core.model.vehicle.Vehicle;
 import pt.vwds.fota.core.repositories.VehicleRepository;
 import pt.vwds.fota.core.services.VehicleService;
 
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -30,5 +31,10 @@ public class VehicleServiceImpl implements VehicleService {
         vehicleRepository.findById(vin)
                 .ifPresentOrElse(vehicle -> vehicleRepository.save(vehicle.addSoftwareComponents(softwareComponents)),
                         () -> vehicleRepository.save(Vehicle.createWithSoftwareComponents(vin, softwareComponents)));
+    }
+
+    @Override
+    public List<Vehicle> getAllVehicles() {
+        return vehicleRepository.findAll();
     }
 }

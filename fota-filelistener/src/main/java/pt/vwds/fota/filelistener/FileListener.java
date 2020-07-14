@@ -7,7 +7,6 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 import pt.vwds.fota.filelistener.services.FileListenerService;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.*;
 
