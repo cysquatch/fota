@@ -10,6 +10,7 @@ import pt.vwds.fota.core.repositories.FeatureRepository;
 import pt.vwds.fota.core.repositories.VehicleRepository;
 import pt.vwds.fota.core.services.VehicleService;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -41,14 +42,14 @@ public class VehicleServiceImpl implements VehicleService {
     }
 
     @Override
-    public List<Vehicle> getAllVehicles(Integer pageNumber, Integer pageSize, String sortBy) {
-        Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.by(sortBy));
+    public List<Vehicle> getAllVehicles(Integer pageNumber, Integer pageSize, Sort.Direction sortOrder) {
+        Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.by(sortOrder, "vin"));
         Page<Vehicle> page =  vehicleRepository.findAll(pageable);
         return page.getContent();
     }
 
     @Override
-    public List<String> getCompatibleFeatures(String vin, Integer pageNumber, Integer pageSize, String sortBy) {
+    public List<String> getCompatibleFeatures(String vin, Integer pageNumber, Integer pageSize, Sort.Direction sortOrder) {
         Vehicle v = vehicleRepository.findById(vin).orElse(null);
         List<String> result = featureRepository.findAll().stream()
                 .filter(feature -> {
@@ -56,13 +57,14 @@ public class VehicleServiceImpl implements VehicleService {
                     return feature.isSatisfiedBy(v.getConfiguration());
                 })
                 .map(Feature::getId)
+                .sorted(sortOrder.equals(Sort.Direction.ASC) ? Comparator.naturalOrder() : Comparator.reverseOrder())
                 .collect(Collectors.toList());
 
         return page(pageNumber, pageSize, result);
     }
 
     @Override
-    public List<String> getIncompatibleFeatures(String vin, Integer pageNumber, Integer pageSize, String sortBy) {
+    public List<String> getIncompatibleFeatures(String vin, Integer pageNumber, Integer pageSize, Sort.Direction sortOrder) {
         Vehicle v = vehicleRepository.findById(vin).orElse(null);
         List<String> result = featureRepository.findAll().stream()
                 .filter(feature -> {
@@ -70,6 +72,7 @@ public class VehicleServiceImpl implements VehicleService {
                     return !feature.isSatisfiedBy(v.getConfiguration());
                 })
                 .map(Feature::getId)
+                .sorted(sortOrder.equals(Sort.Direction.ASC) ? Comparator.naturalOrder() : Comparator.reverseOrder())
                 .collect(Collectors.toList());
 
         return page(pageNumber, pageSize, result);
