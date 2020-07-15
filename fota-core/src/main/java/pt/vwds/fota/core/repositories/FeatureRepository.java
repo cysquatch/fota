@@ -7,5 +7,5 @@ import pt.vwds.fota.core.model.feature.Feature;
 import java.util.UUID;
 
 @Repository
-public interface FeatureRepository extends MongoRepository<Feature, UUID> {
+public interface FeatureRepository extends MongoRepository<Feature, String> {
 }

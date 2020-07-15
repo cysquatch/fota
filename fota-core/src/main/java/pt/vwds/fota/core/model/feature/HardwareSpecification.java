@@ -24,7 +24,7 @@ public class HardwareSpecification {
     }
 
     protected boolean isSatisfiedBy(ComponentsConfiguration componentsConfiguration) {
-        return mustHave.containsAll(componentsConfiguration.getHardwareComponents()) &&
+        return componentsConfiguration.getHardwareComponents().containsAll(mustHave) &&
                 cantHave.stream().noneMatch(hardwareComponent -> componentsConfiguration.getHardwareComponents().contains(hardwareComponent));
     }
 }

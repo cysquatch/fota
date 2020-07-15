@@ -24,6 +24,6 @@ public class SoftwareSpecification {
     }
 
     protected boolean isSatisfiedBy(ComponentsConfiguration componentsConfiguration) {
-        return mustHave.containsAll(componentsConfiguration.getSoftwareComponents()) &&
+        return componentsConfiguration.getSoftwareComponents().containsAll(mustHave) &&
                 cantHave.stream().noneMatch(softwareComponent -> componentsConfiguration.getSoftwareComponents().contains(softwareComponent));
     }}

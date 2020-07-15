@@ -26,7 +26,7 @@ public class FileListener implements ApplicationListener<ApplicationReadyEvent> 
 
     @Override
     public void onApplicationEvent(ApplicationReadyEvent e) {
-        log.info("FileListener has started...");
+        log.info("FileListener started...");
         try {
             run();
         } catch (InterruptedException | IOException interruptedException) {

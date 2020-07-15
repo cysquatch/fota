@@ -1,6 +1,7 @@
 package pt.vwds.fota.api.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pt.vwds.fota.core.model.vehicle.Vehicle;
@@ -21,5 +22,20 @@ public class VehicleController {
     @GetMapping("")
     public List<Vehicle> getAll() {
         return vehicleService.getAllVehicles();
+    }
+
+    @GetMapping("/{vin}")
+    public List<String> getAllFeature(@PathVariable String vin) {
+        return null;
+    }
+
+    @GetMapping("/{vin}/compatible")
+    public List<String> getCompatibleFeatures(@PathVariable String vin) {
+        return vehicleService.getCompatibleFeatures(vin);
+    }
+
+    @GetMapping("/{vin}/incompatible")
+    public List<String> getIncompatibleFeatures(@PathVariable String vin) {
+        return vehicleService.getIncompatibleFeatures(vin);
     }
 }

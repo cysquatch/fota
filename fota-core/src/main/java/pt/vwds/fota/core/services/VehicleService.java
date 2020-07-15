@@ -11,4 +11,6 @@ public interface VehicleService {
     void addHardwareConfiguration(String vin, Set<HardwareComponent> hardwareComponents);
     void addSoftwareConfiguration(String vin, Set<SoftwareComponent> softwareComponents);
     List<Vehicle> getAllVehicles();
+    List<String> getCompatibleFeatures(String vin);
+    List<String> getIncompatibleFeatures(String vin);
 }
