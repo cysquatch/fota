@@ -1,0 +1,344 @@
+[
+  {
+    "id": "feature_a",
+    "softwareSpecification": {
+      "mustHave": [
+        {
+          "code": "GdS6TI"
+        },
+        {
+          "code": "93ZSw9"
+        },
+        {
+          "code": "btZUSp"
+        },
+        {
+          "code": "MZgsou"
+        },
+        {
+          "code": "Di75Ry"
+        },
+        {
+          "code": "0vhcNa"
+        },
+        {
+          "code": "33MHDf"
+        },
+        {
+          "code": "Di75Ry"
+        },
+        {
+          "code": "L34Pur"
+        }
+      ],
+      "cantHave": [
+        {
+          "code": "ykzkfK"
+        },
+        {
+          "code": "87Zhwo"
+        },
+        {
+          "code": "y4XKWo"
+        },
+        {
+          "code": "ay0pW2"
+        },
+        {
+          "code": "44OmDi"
+        },
+        {
+          "code": "aJsd3i"
+        },
+        {
+          "code": "Qoflqf"
+        },
+        {
+          "code": "2EzZXE"
+        },
+        {
+          "code": "j3mmf8"
+        },
+        {
+          "code": "MUR8Lx"
+        },
+        {
+          "code": "E6GYk7"
+        },
+        {
+          "code": "rDJyQX"
+        }
+      ]
+    },
+    "hardwareSpecification": {
+      "mustHave": [
+        {
+          "code": "rlTcbX"
+        },
+        {
+          "code": "wEEA00"
+        },
+        {
+          "code": "SoF5uL"
+        },
+        {
+          "code": "VhB9VY"
+        },
+        {
+          "code": "NWytcy"
+        }
+      ],
+      "cantHave": [
+        {
+          "code": "yZDXJJ"
+        },
+        {
+          "code": "tMI8bI"
+        },
+        {
+          "code": "DS8tZU"
+        },
+        {
+          "code": "PgOtkv"
+        },
+        {
+          "code": "PuyTwj"
+        },
+        {
+          "code": "ObZw28"
+        },
+        {
+          "code": "ZCLFOe"
+        },
+        {
+          "code": "jyP5PK"
+        },
+        {
+          "code": "pS5ZQs"
+        },
+        {
+          "code": "rcjjPX"
+        },
+        {
+          "code": "6VO6Uq"
+        },
+        {
+          "code": "DAlCk4"
+        },
+        {
+          "code": "YxKjcX"
+        }
+      ]
+    },
+    "_class": "pt.vwds.fota.core.model.feature.Feature"
+  },
+  {
+    "id": "feature_b",
+    "softwareSpecification": {
+      "mustHave": [
+        {
+          "code": "FhFXVE"
+        },
+        {
+          "code": "FVlp0N"
+        },
+        {
+          "code": "I25pUg"
+        },
+        {
+          "code": "PeQWGL"
+        },
+        {
+          "code": "LYZzKL"
+        },
+        {
+          "code": "Cd9t6T"
+        },
+        {
+          "code": "pYgxjp"
+        },
+        {
+          "code": "T55Adn"
+        },
+        {
+          "code": "cjKv9N"
+        }
+      ],
+      "cantHave": [
+        {
+          "code": "yfepdF"
+        },
+        {
+          "code": "Q54BVi"
+        },
+        {
+          "code": "1QNx4P"
+        },
+        {
+          "code": "u9XCsm"
+        },
+        {
+          "code": "RgrAEU"
+        },
+        {
+          "code": "0M97HZ"
+        },
+        {
+          "code": "BD80qR"
+        },
+        {
+          "code": "RGOkrt"
+        },
+        {
+          "code": "y4XKWo"
+        },
+        {
+          "code": "LV7Msr"
+        },
+        {
+          "code": "0OEvxe"
+        },
+        {
+          "code": "VLyf6R"
+        },
+        {
+          "code": "s1I5dm"
+        },
+        {
+          "code": "I4wRf9"
+        }
+      ]
+    },
+    "hardwareSpecification": {
+      "mustHave": [
+        {
+          "code": "fMm4Hl"
+        },
+        {
+          "code": "PWO7oa"
+        },
+        {
+          "code": "F73iHn"
+        }
+      ],
+      "cantHave": [
+        {
+          "code": "mrGqkV"
+        },
+        {
+          "code": "Ps19N7"
+        }
+      ]
+    },
+    "_class": "pt.vwds.fota.core.model.feature.Feature"
+  },
+  {
+    "id": "feature_c",
+    "softwareSpecification": {
+      "mustHave": [
+        {
+          "code": "CtbvOZ"
+        },
+        {
+          "code": "bpdM7a"
+        },
+        {
+          "code": "rTM6gD"
+        },
+        {
+          "code": "LvXPPT"
+        },
+        {
+          "code": "Gwz57A"
+        },
+        {
+          "code": "NNTgVk"
+        },
+        {
+          "code": "dt5WJj"
+        },
+        {
+          "code": "zTUQwE"
+        },
+        {
+          "code": "ufX8mD"
+        },
+        {
+          "code": "0vhcNa"
+        },
+        {
+          "code": "UPCZFv"
+        },
+        {
+          "code": "uUZjNJ"
+        },
+        {
+          "code": "ljnm95"
+        },
+        {
+          "code": "QP8Bls"
+        },
+        {
+          "code": "egNmFq"
+        },
+        {
+          "code": "Gwz57A"
+        },
+        {
+          "code": "PJyE8c"
+        },
+        {
+          "code": "pYgxjp"
+        }
+      ],
+      "cantHave": [
+        {
+          "code": "T2WuvF"
+        }
+      ]
+    },
+    "hardwareSpecification": {
+      "mustHave": [
+        {
+          "code": "wv2CZs"
+        },
+        {
+          "code": "CEuBzO"
+        },
+        {
+          "code": "Cu5fGc"
+        },
+        {
+          "code": "jvqI5i"
+        },
+        {
+          "code": "pZLSFn"
+        },
+        {
+          "code": "eUMxfa"
+        }
+      ],
+      "cantHave": [
+        {
+          "code": "JY3Vcn"
+        },
+        {
+          "code": "8PielJ"
+        },
+        {
+          "code": "NcOLyY"
+        },
+        {
+          "code": "Zfahrb"
+        },
+        {
+          "code": "iKALCh"
+        },
+        {
+          "code": "6IHTbr"
+        }
+      ]
+    },
+    "_class": "pt.vwds.fota.core.model.feature.Feature"
+  }
+]

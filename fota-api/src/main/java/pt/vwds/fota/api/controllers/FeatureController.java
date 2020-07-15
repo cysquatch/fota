@@ -4,10 +4,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import pt.vwds.fota.core.model.HardwareComponent;
+import pt.vwds.fota.core.model.SoftwareComponent;
 import pt.vwds.fota.core.model.feature.Feature;
+import pt.vwds.fota.core.model.feature.HardwareSpecification;
+import pt.vwds.fota.core.model.feature.SoftwareSpecification;
 import pt.vwds.fota.core.repositories.FeatureRepository;
 
-import java.util.UUID;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/fota/feature")
@@ -19,14 +23,4 @@ public class FeatureController {
         this.featureRepository = featureRepository;
     }
 
-    @GetMapping("/hello")
-    public String hello() {
-        return "Hello!";
-    }
-
-    @PostMapping("/create")
-    public void create() {
-        Feature f1 = Feature.builder().id(UUID.randomUUID()).build();
-        featureRepository.save(f1);
-    }
 }

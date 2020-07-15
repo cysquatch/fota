@@ -1,5 +1,7 @@
 package pt.vwds.fota.core.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -13,6 +15,11 @@ import java.util.stream.Collectors;
 public class SoftwareComponent{
 
     private final String code;
+
+    @JsonCreator
+    private SoftwareComponent(@JsonProperty("code") String code) {
+        this.code = code;
+    }
 
     public static SoftwareComponent fromString(String code) {
         return SoftwareComponent.builder().code(code).build();
