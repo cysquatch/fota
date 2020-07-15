@@ -23,31 +23,41 @@ public class FeatureServiceImpl implements FeatureService {
     }
 
     @Override
-    public List<Feature> getAllFeature() {
+    public List<Feature> getAllFeature(Integer pageNumber, Integer pageSize, String sortBy) {
         return featureRepository.findAll();
     }
 
     @Override
-    public List<String> getCompatibleVin(String feature) {
+    public List<String> getCompatibleVin(String feature, Integer pageNumber, Integer pageSize, String sortBy) {
         Feature f = featureRepository.findById(feature).orElse(null);
-        return vehicleRepository.findAll().stream()
+        List<String> result = vehicleRepository.findAll().stream()
                 .filter(vehicle -> {
                     assert f != null;
                     return f.isSatisfiedBy(vehicle.getConfiguration());
                 })
                 .map(Vehicle::getVin)
                 .collect(Collectors.toList());
+
+        return page(pageNumber, pageSize, result);
     }
 
     @Override
-    public List<String> getIncompatibleVin(String feature) {
+    public List<String> getIncompatibleVin(String feature, Integer pageNumber, Integer pageSize, String sortBy) {
         Feature f = featureRepository.findById(feature).orElse(null);
-        return vehicleRepository.findAll().stream()
+        List<String> result = vehicleRepository.findAll().stream()
                 .filter(vehicle -> {
                     assert f != null;
                     return !f.isSatisfiedBy(vehicle.getConfiguration());
                 })
                 .map(Vehicle::getVin)
                 .collect(Collectors.toList());
+
+        return page(pageNumber, pageSize, result);
+    }
+
+    private <E> List<E> page(Integer pageNumber, Integer pageSize, List<E> content) {
+        int start = pageNumber * pageSize;
+        int end = Math.min((start + pageSize), content.size());
+        return content.subList(start, end);
     }
 }

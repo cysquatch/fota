@@ -1,5 +1,6 @@
 package pt.vwds.fota.core.services.impl;
 
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 import pt.vwds.fota.core.model.HardwareComponent;
 import pt.vwds.fota.core.model.SoftwareComponent;
@@ -40,31 +41,43 @@ public class VehicleServiceImpl implements VehicleService {
     }
 
     @Override
-    public List<Vehicle> getAllVehicles() {
-        return vehicleRepository.findAll();
+    public List<Vehicle> getAllVehicles(Integer pageNumber, Integer pageSize, String sortBy) {
+        Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.by(sortBy));
+        Page<Vehicle> page =  vehicleRepository.findAll(pageable);
+        return page.getContent();
     }
 
     @Override
-    public List<String> getCompatibleFeatures(String vin) {
+    public List<String> getCompatibleFeatures(String vin, Integer pageNumber, Integer pageSize, String sortBy) {
         Vehicle v = vehicleRepository.findById(vin).orElse(null);
-        return featureRepository.findAll().stream()
+        List<String> result = featureRepository.findAll().stream()
                 .filter(feature -> {
                     assert v != null;
                     return feature.isSatisfiedBy(v.getConfiguration());
                 })
                 .map(Feature::getId)
                 .collect(Collectors.toList());
+
+        return page(pageNumber, pageSize, result);
     }
 
     @Override
-    public List<String> getIncompatibleFeatures(String vin) {
+    public List<String> getIncompatibleFeatures(String vin, Integer pageNumber, Integer pageSize, String sortBy) {
         Vehicle v = vehicleRepository.findById(vin).orElse(null);
-        return featureRepository.findAll().stream()
+        List<String> result = featureRepository.findAll().stream()
                 .filter(feature -> {
                     assert v != null;
                     return !feature.isSatisfiedBy(v.getConfiguration());
                 })
                 .map(Feature::getId)
                 .collect(Collectors.toList());
+
+        return page(pageNumber, pageSize, result);
+    }
+
+    private <E> List<E> page(Integer pageNumber, Integer pageSize, List<E> content) {
+        int start = pageNumber * pageSize;
+        int end = Math.min((start + pageSize), content.size());
+        return content.subList(start, end);
     }
 }

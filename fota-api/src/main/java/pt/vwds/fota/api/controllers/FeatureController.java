@@ -1,9 +1,6 @@
 package pt.vwds.fota.api.controllers;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pt.vwds.fota.core.model.feature.Feature;
 import pt.vwds.fota.core.services.FeatureService;
 
@@ -20,23 +17,33 @@ public class FeatureController {
     }
 
     @GetMapping("")
-    public List<Feature> getAll() {
-        return featureService.getAllFeature();
+    public List<Feature> getAll(@RequestParam(defaultValue = "0") Integer pageNumber,
+                                @RequestParam(defaultValue = Integer.MAX_VALUE + "") Integer pageSize,
+                                @RequestParam(defaultValue = "id") String sortBy) {
+        return featureService.getAllFeature(pageNumber, pageSize, sortBy);
     }
 
     @GetMapping("/{feature}")
-    public List<String> getAllVin(@PathVariable String feature) {
+    public List<String> getAllVin(@PathVariable String feature,
+                                  @RequestParam(defaultValue = "0") Integer pageNumber,
+                                  @RequestParam(defaultValue = Integer.MAX_VALUE + "") Integer pageSize,
+                                  @RequestParam(defaultValue = "") String sortBy) {
         return null;
     }
 
     @GetMapping("/{feature}/compatible")
-    public List<String> getCompatibleVin(@PathVariable String feature) {
-        return featureService.getCompatibleVin(feature);
+    public List<String> getCompatibleVin(@PathVariable String feature,
+                                         @RequestParam(defaultValue = "0") Integer pageNumber,
+                                         @RequestParam(defaultValue = Integer.MAX_VALUE + "") Integer pageSize,
+                                         @RequestParam(defaultValue = "") String sortBy) {
+        return featureService.getCompatibleVin(feature, pageNumber, pageSize, sortBy);
     }
 
     @GetMapping("/{feature}/incompatible")
-    public List<String> getIncompatibleVin(@PathVariable String feature) {
-        return featureService.getIncompatibleVin(feature);
+    public List<String> getIncompatibleVin(@PathVariable String feature,
+                                           @RequestParam(defaultValue = "0") Integer pageNumber,
+                                           @RequestParam(defaultValue = Integer.MAX_VALUE + "") Integer pageSize,
+                                           @RequestParam(defaultValue = "") String sortBy) {
+        return featureService.getIncompatibleVin(feature, pageNumber, pageSize, sortBy);
     }
-
 }
