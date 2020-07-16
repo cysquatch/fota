@@ -35,6 +35,16 @@ public class FeatureServiceImpl implements FeatureService {
     }
 
     @Override
+    public List<String> getVin(Integer pageNumber, Integer pageSize, Sort.Direction sortOrder) {
+        List<String> result = vehicleRepository.findAll().stream()
+                .map(Vehicle::getVin)
+                .sorted(sortOrder.equals(Sort.Direction.ASC) ? Comparator.naturalOrder() : Comparator.reverseOrder())
+                .collect(Collectors.toList());
+
+        return page(pageNumber, pageSize, result);
+    }
+
+    @Override
     public List<String> getCompatibleVin(String feature, Integer pageNumber, Integer pageSize, Sort.Direction sortOrder) {
         Feature f = featureRepository.findById(feature).orElse(null);
         List<String> result = vehicleRepository.findAll().stream()

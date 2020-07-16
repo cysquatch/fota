@@ -29,7 +29,7 @@ public class FeatureController {
                                   @RequestParam(defaultValue = "0") Integer pageNumber,
                                   @RequestParam(defaultValue = Integer.MAX_VALUE + "") Integer pageSize,
                                   @RequestParam(defaultValue = "ASC") String sortOrder) {
-        return null;
+        return featureService.getVin(pageNumber, pageSize, Sort.Direction.fromString(sortOrder));
     }
 
     @GetMapping("/{feature}/compatible")

@@ -49,6 +49,16 @@ public class VehicleServiceImpl implements VehicleService {
     }
 
     @Override
+    public List<String> getFeatures(Integer pageNumber, Integer pageSize, Sort.Direction sortOrder) {
+        List<String> result = featureRepository.findAll().stream()
+                .map(Feature::getId)
+                .sorted(sortOrder.equals(Sort.Direction.ASC) ? Comparator.naturalOrder() : Comparator.reverseOrder())
+                .collect(Collectors.toList());
+
+        return page(pageNumber, pageSize, result);
+    }
+
+    @Override
     public List<String> getCompatibleFeatures(String vin, Integer pageNumber, Integer pageSize, Sort.Direction sortOrder) {
         Vehicle v = vehicleRepository.findById(vin).orElse(null);
         List<String> result = featureRepository.findAll().stream()
