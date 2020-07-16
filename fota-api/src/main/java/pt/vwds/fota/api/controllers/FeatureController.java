@@ -8,7 +8,7 @@ import pt.vwds.fota.core.services.FeatureService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/fota/features")
+@RequestMapping(value = "/fota/features", produces="application/json")
 public class FeatureController {
 
     private final FeatureService featureService;

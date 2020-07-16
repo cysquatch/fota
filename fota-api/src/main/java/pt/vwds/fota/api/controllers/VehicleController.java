@@ -8,7 +8,7 @@ import pt.vwds.fota.core.services.VehicleService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/fota/vehicles")
+@RequestMapping(value = "/fota/vehicles", produces="application/json")
 public class VehicleController {
 
     private final VehicleService vehicleService;
